@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.json;
+package com.google.json.client;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -296,7 +296,7 @@ public final class EvalMinifier {
     {"implements", "instanceof"}
   };
 
-  static final class NameGenerator {
+  public static final class NameGenerator {
 
     private final StringBuilder sb = new StringBuilder("a");
 

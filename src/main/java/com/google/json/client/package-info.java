@@ -1,2 +1,2 @@
 @javax.annotation.ParametersAreNonnullByDefault
-package com.google.json;
+package com.google.json.client;

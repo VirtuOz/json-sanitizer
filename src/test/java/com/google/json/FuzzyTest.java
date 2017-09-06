@@ -23,6 +23,7 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.google.json.client.JsonSanitizer;
 import junit.framework.TestCase;
 import org.junit.Test;
 

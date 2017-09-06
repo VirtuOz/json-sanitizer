@@ -14,10 +14,12 @@
 
 package com.google.json;
 
-import static com.google.json.JsonSanitizer.DEFAULT_NESTING_DEPTH;
-import static com.google.json.JsonSanitizer.sanitize;
+import static com.google.json.client.JsonSanitizer.DEFAULT_NESTING_DEPTH;
+import static com.google.json.client.JsonSanitizer.sanitize;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.google.json.client.JsonSanitizer;
 import junit.framework.TestCase;
 import org.junit.Test;
 

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.google.json;
+package com.google.json.client;
 
 /**
  * Given JSON-like content, converts it to valid JSON.
@@ -192,7 +192,7 @@ public final class JsonSanitizer {
     this(jsonish, DEFAULT_NESTING_DEPTH);
   }
 
-  JsonSanitizer(String jsonish, int maximumNestingDepth) {
+  public JsonSanitizer(String jsonish, int maximumNestingDepth) {
     this.maximumNestingDepth = Math.min(Math.max(1, maximumNestingDepth),MAXIMUM_NESTING_DEPTH);
     if (SUPER_VERBOSE_AND_SLOW_LOGGING) {
       System.err.println("\n" + jsonish + "\n========");
@@ -200,7 +200,7 @@ public final class JsonSanitizer {
     this.jsonish = jsonish != null ? jsonish : "null";
   }
 
-  int getMaximumNestingDepth() {
+  public int getMaximumNestingDepth() {
     return this.maximumNestingDepth;
   }
 

@@ -14,11 +14,12 @@
 
 package com.google.json;
 
+import com.google.json.client.EvalMinifier;
 import junit.framework.TestCase;
 
 import org.junit.Test;
 
-import com.google.json.EvalMinifier.NameGenerator;
+import com.google.json.client.EvalMinifier.NameGenerator;
 
 @SuppressWarnings("javadoc")
 public final class EvalMinifierTest extends TestCase {

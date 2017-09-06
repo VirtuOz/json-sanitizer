@@ -11,22 +11,22 @@
     When the version ends with "-SNAPSHOT", then `mvn deploy` moves it to
     the snapshot directory instead of into staging proper.
    -->
-  <version>1.2.1-SNAPSHOT</version>
+  <version>1.2.1</version>
   <name>json-sanitizer</name>
   <description>
-Given JSON-like content, converts it to valid JSON.
+    Given JSON-like content, converts it to valid JSON.
 
-This can be attached at either end of a data-pipeline to help satisfy
-Postel's principle:
+    This can be attached at either end of a data-pipeline to help satisfy
+    Postel's principle:
 
     be conservative in what you do, be liberal in what you accept from
     others
 
-Applied to JSON-like content from others, it will produce well-formed
-JSON that should satisfy any parser you use.
+    Applied to JSON-like content from others, it will produce well-formed
+    JSON that should satisfy any parser you use.
 
-Applied to your output before you send, it will coerce minor mistakes in
-encoding and make it easier to embed your JSON in HTML and XML.
+    Applied to your output before you send, it will coerce minor mistakes in
+    encoding and make it easier to embed your JSON in HTML and XML.
   </description>
   <url>https://github.com/OWASP/json-sanitizer</url>
 
@@ -86,6 +86,7 @@ encoding and make it easier to embed your JSON in HTML and XML.
           <artifactId>sonar-maven-plugin</artifactId>
           <version>3.3.0.603</version>
         </plugin>
+
       </plugins>
     </pluginManagement>
 
@@ -151,6 +152,27 @@ encoding and make it easier to embed your JSON in HTML and XML.
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.0.2</version>
+        <configuration>
+          <classifier>nuance</classifier>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.2-beta-5</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+            <descriptorRef>project</descriptorRef>
+          </descriptorRefs>
+        </configuration>
+      </plugin>
+
       <!-- http://www.javaworld.com/article/2074515/core-java/
            unit-test-code-coverage-with-maven-and-jacoco.html -->
       <plugin>
@@ -178,6 +200,16 @@ encoding and make it easier to embed your JSON in HTML and XML.
         </executions>
       </plugin>
     </plugins>
+
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.java</include>
+          <include>**/*.gwt.xml</include>
+        </includes>
+      </resource>
+    </resources>
   </build>
 
   <developers>
@@ -211,6 +243,21 @@ encoding and make it easier to embed your JSON in HTML and XML.
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>2.8.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.mikesamuel</groupId>
+      <artifactId>json-sanitizer</artifactId>
+      <version>${project.version}</version>
+      <classifier>sources</classifier>
+      <scope>provided</scope>
+    </dependency>
+
   </dependencies>
 
   <reporting>
